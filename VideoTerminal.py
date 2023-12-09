@@ -92,7 +92,6 @@ class VideoTerminal:
                     print(self.smooth_rvecs[marker_id])
                     R = np.array(self.smooth_rvecs[marker_id])
                     R = np.median(R, axis=0)
-                    print(R)
                     T = np.array(self.smooth_tvecs[marker_id])
                     T = np.median(T, axis=0)
                     rvec_matrix = cv2.Rodrigues(R)[0]
