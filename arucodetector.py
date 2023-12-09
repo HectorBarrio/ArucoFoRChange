@@ -39,17 +39,19 @@ class ArucoDetector():
         except cv2.error:
             pass
 
-    def add_logo(self):
+    def add_logo(self, frame):
         # Add our logo if present:
         try:
             l = self.lim
-            self.frame[l:-1, l:-1, 0:3] = self.logo
-            self.frame[l:-1, l:-1, 2] = 1
+            frame[l:-1, l:-1, 0:3] = self.logo
+            frame[l:-1, l:-1, 2] = 1
+            return frame
         except Exception as error:
             print(error)
             pass
 
     def detect_markers(self, frame):
+        self.add_logo(frame)
         resize_factor = self.resize_factor
         tvecs = dict()
         rvecs = dict()

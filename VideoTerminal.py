@@ -90,9 +90,11 @@ class VideoTerminal:
                 # Set the origin point: 8 in this case
                 if marker_id == 8:
                     print(self.smooth_rvecs[marker_id])
-                    R = np.array(self.smooth_rvecs[marker_id]).mean(axis=0)
+                    R = np.array(self.smooth_rvecs[marker_id])
+                    R = np.median(R, axis=0)
                     print(R)
-                    T = np.array(self.smooth_tvecs[marker_id]).mean(axis=0)
+                    T = np.array(self.smooth_tvecs[marker_id])
+                    T = np.median(T, axis=0)
                     rvec_matrix = cv2.Rodrigues(R)[0]
                     rmat = np.matrix(rvec_matrix)
                     tmat = np.matrix(T)
